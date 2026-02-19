@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, ChevronRight } from 'lucide-react';
+import { X, Send, ChevronRight } from 'lucide-react';
 import type { ChatMessage } from '../types';
 
 const quickReplies = [
