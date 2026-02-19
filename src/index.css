@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 7%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+    --primary: 0 0% 7%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 220 9% 96%;
+    --secondary-foreground: 0 0% 7%;
+    --muted: 220 9% 96%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 181 52% 38%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 92%;
+    --input: 0 0% 92%;
+    --ring: 181 52% 38%;
+    --radius: 0;
+
+    /* Custom Veloré Colors */
+    --velore-bg: #F6F7F9;
+    --velore-dark: #0B0D10;
+    --velore-text: #111111;
+    --velore-text-secondary: #6B7280;
+    --velore-accent: #2F8E92;
+    --velore-border: #EAEAEA;
+    --velore-white: #FFFFFF;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--velore-bg);
+    color: var(--velore-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+}
+
+@layer components {
+  .velore-container {
+    @apply w-full px-6 md:px-12 lg:px-[6vw];
+  }
+
+  .velore-heading-xl {
+    font-size: clamp(44px, 5vw, 76px);
+    font-weight: 600;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+
+  .velore-heading-lg {
+    font-size: clamp(25px, 3.6vw, 56px);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .velore-heading-md {
+    font-size: clamp(24px, 2.4vw, 36px);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  .velore-body {
+    font-size: clamp(14px, 1.1vw, 16px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--velore-text-secondary);
+  }
+
+  .velore-body-sm {
+    font-size: clamp(12px, 0.9vw, 14px);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--velore-text-secondary);
+  }
+
+  .velore-body-xs {
+    font-size: clamp(11px, 0.8vw, 12px);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--velore-text-secondary);
+  }
+
+  .velore-micro {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .velore-btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium transition-all duration-300;
+    background-color: var(--velore-accent);
+    color: white;
+  }
+
+  .velore-btn-primary:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(47, 142, 146, 0.25);
+  }
+
+  .velore-btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium transition-all duration-300;
+    background-color: transparent;
+    color: var(--velore-text);
+    border: 1px solid var(--velore-border);
+  }
+
+  .velore-btn-secondary:hover {
+    background-color: var(--velore-border);
+    transform: translateY(-2px);
+  }
+
+  .velore-link {
+    @apply relative inline-flex items-center text-sm font-medium transition-all duration-300;
+    color: var(--velore-text);
+  }
+
+  .velore-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-px bg-current transform origin-left scale-x-0 transition-transform duration-300;
+  }
+
+  .velore-link:hover::after {
+    transform: scaleX(1);
+  }
+
+  .velore-card {
+    @apply transition-all duration-300;
+    background-color: var(--velore-white);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+  }
+
+  .velore-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+  }
+
+  .velore-hairline {
+    @apply w-10 h-px;
+    background-color: rgba(17, 17, 17, 0.14);
+  }
+
+  .velore-section-light {
+    background-color: var(--velore-bg);
+  }
+
+  .velore-section-dark {
+    background-color: var(--velore-dark);
+    color: white;
+  }
+
+  .velore-section-dark .velore-body {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .velore-grain {
+    @apply fixed inset-0 pointer-events-none z-[1000];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    mix-blend-mode: multiply;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--velore-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--velore-border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--velore-text-secondary);
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(47, 142, 146, 0.2);
+  color: var(--velore-text);
+}
