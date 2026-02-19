@@ -129,7 +129,7 @@ export default function Chatbot() {
    {/* Chat Button */}
    <button
     onClick={() => setIsOpen(!isOpen)}
-    className={`fixed bottom:3 md:bottom-6 right-6 z-50 w-14 h-14 shadow-lg transition-all duration-300 overflow-hidden flex items-center justify-center ${
+    className={`fixed bottom-3 md:bottom-6 right-6 z-50 w-14 h-14 shadow-lg transition-all duration-300 overflow-hidden flex items-center justify-center ${
      isOpen
       ? 'bg-[#111111]'
       : 'bg-[#2F8E92] hover:scale-105'
