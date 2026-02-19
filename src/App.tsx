@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -20,27 +20,38 @@ import './App.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+function ScrollToTop() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  return null;
+}
+
 function App() {
- useEffect(() => {
-  // Refresh ScrollTrigger on route change
-  ScrollTrigger.refresh();
-  
-  return () => {
-   ScrollTrigger.getAll().forEach(st => st.kill());
-  };
- }, []);
+  useEffect(() => {
+    // Refresh ScrollTrigger on route change
+    ScrollTrigger.refresh();
+
+    return () => {
+     ScrollTrigger.getAll().forEach(st => st.kill());
+    };
+  }, []);
 
  return (
   <Router>
    <div className="relative min-h-screen">
     {/* Grain overlay */}
     <div className="velore-grain" />
-    
+
     {/* Navigation */}
     <Navigation />
-    
+
     {/* Main content */}
     <main>
+     <ScrollToTop />
      <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/inventory" element={<Inventory />} />
@@ -56,10 +67,10 @@ function App() {
       <Route path="/secure-transactions" element={<SecureTransactionPolicy />} />
      </Routes>
     </main>
-    
+
     {/* Footer */}
     <Footer />
-    
+
     {/* Chatbot */}
     <Chatbot />
    </div>
